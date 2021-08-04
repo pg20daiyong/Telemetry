@@ -12,7 +12,8 @@ Date: 02/08/2021
 This project shows the client app running in cloud(Google). and the admin page functioning to accept access and display telemetry data generated from game data.
 
 #### **How to use**
-
+download from git 
+> git clone https://github.com/pg20daiyong/Telemetry.git
 ---
 
 - > vue ui
@@ -31,8 +32,6 @@ or
 > npm install firebase
 > npm install firebase-functions
 > npm install -g firebase-admin
-> npm install axios
-> npm install vue-router
 
 ## Authors
 
