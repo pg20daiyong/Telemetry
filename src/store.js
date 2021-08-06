@@ -7,27 +7,27 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 Vue.use(Vuex, Axios);
-Vue.use( Vuex);
+Vue.use(Vuex);
 
-const funcURL = "https://us-central1-cloud-d9f02.cloudfunctions.net/"
-
+//const funcURL = "https://us-central1-cloud-d9f02.cloudfunctions.net/"
+const funcURL = "http://localhost:5001/cloud-d9f02/us-central1/"
 
 const fbConfig = {
-    apiKey: "AIzaSyAzXD6V0AdF27NVWIbxBJcmkE1mjfkIolU",
-    authDomain: "cloud-d9f02.firebaseapp.com",
-    databaseURL: "https://cloud-d9f02.appspot.com",
-    projectId: "cloud-d9f02",
+  apiKey: "AIzaSyAzXD6V0AdF27NVWIbxBJcmkE1mjfkIolU",
+  authDomain: "cloud-d9f02.firebaseapp.com",
+  databaseURL: "https://cloud-d9f02.appspot.com",
+  projectId: "cloud-d9f02",
 }
 
 
-const db =firebase.initializeApp(fbConfig).firestore();
-let ref = db.collection('data'); 
-  
-Axios.defaults.baseURL = 'http://localhost:5001'
+const db = firebase.initializeApp(fbConfig).firestore();
+let ref = db.collection('data');
+
+//Axios.defaults.baseURL = 'http://localhost:5001/cloud-d9f02/us-central1/'
 
 export default new Vuex.Store({
   state: {
-    db, 
+    db,
     records: []
   },
   mutations: {
@@ -37,26 +37,27 @@ export default new Vuex.Store({
   },
   actions: {
     getData(state) {
-            functions.https.aggregate();
-        },
+      functions.https.aggregate();
+    },
     doSendRecord({ commit }, data) {
       //let setSf = ref.doc().set( {"data":[{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097}]} );
-      Axios(`${funcURL}senddata`, { method:'POST',         
+      console.log(`${funcURL}senddata`);
+      Axios(`${funcURL}senddata`, {
+        method: 'POST',
         data: data
       })
-      .then(response => response.status)
-      .catch(err => console.warn(err));
+        .then(response => response.status)
+        .catch(err => console.warn(err));
       //let setSf = ref.doc().update(data)
     }
     ,
     doFetchRecords({ commit }) {
-      Axios(`${funcURL}getdata`, { method:'GET'})
-      .then(response => response.data)
-      .then(data=> 
-        {
+      Axios(`${funcURL}getdata`, { method: 'GET' })
+        .then(response => response.data)
+        .then(data => {
           commit('setRecords', data);
         })
-      .catch(err => console.warn(err));
+        .catch(err => console.warn(err));
       // let getDoc = ref.get()
       //   .then(doc => {
       //     doc.forEach( item=>{  

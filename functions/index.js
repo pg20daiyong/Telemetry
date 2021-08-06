@@ -7,7 +7,7 @@ const config = {
     storageBucket: "cloud-d9f02.appspot.com",
     locationId: "us-central"
 };
-const {Firestore} = require('@google-cloud/firestore')
+const { Firestore } = require('@google-cloud/firestore')
 const cors = require('cors')({ origin: true })
 // import functions from firebase-functions
 
@@ -20,6 +20,13 @@ const cors = require('cors')({ origin: true })
 // });
 admin.initializeApp(config);
 var db = admin.firestore();
+
+
+exports.test = functions.https.onRequest((request, response) => {
+    cors(request, response, () => {
+        response.status(500).send({ test: 'Testing functions' });
+    })
+})
 
 // export const aggregate = functions.https.onCall(...
 exports.aggregate = functions.https.onCall((snapshot, context) => {
@@ -36,13 +43,13 @@ exports.aggregate = functions.https.onCall((snapshot, context) => {
 // })
 
 exports.getdata = functions.https.onRequest((request, response) => {
-   cors(request, response, () => {       
+    cors(request, response, () => {
         let db = admin.firestore();
         db.collection("telemetry").doc("data").get()
-        .then(doc=>{
-            const data = doc.data();
-            return response.send(data);
-        })
+            .then(doc => {
+                const data = doc.data();
+                return response.send(data);
+            })
     });
     // const myId = request.params.id;
     // console.log(myId)
@@ -51,10 +58,10 @@ exports.getdata = functions.https.onRequest((request, response) => {
 });
 
 exports.senddata = functions.https.onRequest((request, response) => {
- 
-    cors(request, response, () => {       
+
+    cors(request, response, () => {
         let db = admin.firestore();
-        const data = {"data":[{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097},{"sessionID":604143841,"timestamp":0.0,"action":0,"teamID":0,"botID":11,"xLocation":-26.0,"zLocation":45.099998474121097,"xHeading":-26.0,"zHeading":47.099998474121097}]}
+        const data = { "data": [{ "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }] }
 
         console.log(data)
         const promise = db.collection("telemetry").doc("data").set(data)
@@ -64,11 +71,11 @@ exports.senddata = functions.https.onRequest((request, response) => {
         prom.catch(error => {
             console.log(error);
             response.status(500).send(error);
-        })  
+        })
     });
-        
 
-       
+
+
 
     // const myId = request.params.id;
     // //  work here
