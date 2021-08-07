@@ -15,15 +15,14 @@ This project shows the client app running in cloud(Google). and the admin page f
 
 ---
 
-- > vue ui
-- go to: http://localhost:8000
-- Go to tasks -> serve -> click on 'run task'
-- go to: http://localhost:4000/
-
-or
-
+- client application run:
 - > npm run client
-- go to : http://localhost:4000/
+- go to: http://localhost:8080
+
+- fire base emulator run:
+- go to functions directory
+- npm run serve
+- go to: http://localhost:5001
 
 ### **Package Install**
 
