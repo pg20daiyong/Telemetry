@@ -34,12 +34,12 @@ This project shows the client app running in cloud(Google). and the admin page f
 
 ### **Package Install**
 
-> npm install vuex
-> npm install firebase
-> npm install firebase-functions
-> npm install -g firebase-admin
-> npm install axios
-> npm install vue-router
+- npm install vuex
+- npm install firebase
+- npm install firebase-functions
+- npm install -g firebase-admin
+- npm install axios
+- npm install vue-router
 
 ## Authors
 
