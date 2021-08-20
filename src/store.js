@@ -27,7 +27,6 @@ let ref = db.collection('data');
 
 export default new Vuex.Store({
   state: {
-    db,
     records: []
   },
   mutations: {
@@ -66,10 +65,12 @@ export default new Vuex.Store({
     }
     ,
     doFetchRecords({ commit }) {
+      
       Axios(`${funcURL}getdata`, { method: 'GET' })
         .then(response => response.data)
         .then(data => {
           commit('setRecords', data);
+          //console.log(data)
         })
         .catch(err => console.warn(err));
       

@@ -51,6 +51,8 @@
         } 
         this.injectActions(mapActions(['doFetchRecords']));        
         this.injectGetters(mapGetters(['getRecords']));   
+
+        //this.onBeforeMount()
         
     }
 
@@ -59,8 +61,10 @@
     }
 
     onBeforeMount() {
-        this.doFetchRecords();        
-        //console.log(this.$store.state.records);   
+        this.doFetchRecords();    
+        //console.log(this.$store.state);      
+
+        //console.log(this.$store.state.records.data.length);   
     }
   }  
   export default new RecordsController('records'/* , { subComponent, anotherComponent } */);

@@ -31,10 +31,15 @@ download from git
 
 ### **Package Install**
 
-> npm install vuex
-> npm install firebase
-> npm install firebase-functions
-> npm install -g firebase-admin
+- npm install vuex
+- npm install firebase
+- npm install firebase-functions
+- npm install -g firebase-admin
+- npm install axios
+- npm install vue-router
+- npm install --save vue-chartjs
+- npm install --save chart.js
+- npm install chart.js@2
 
 ## Authors
 

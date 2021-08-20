@@ -11,7 +11,7 @@ Vue.use( Router );
 
 import Operation from '@/routes/Operation.vue'
 //import Analysis from '@/routes/Analysis.vue'
-//import Liveview from '@/routes/Liveview.vue'
+import Liveview from '@/routes/Liveview.vue'
 import Overview from '@/routes/Overview.vue'
 import SendRecord from '@/routes/SendRecord.vue'
 
@@ -21,7 +21,8 @@ export default new Router({
         { path: "/", name: "Overview", component: Overview , props: true},// props: { name: "Modify Data" } },
         //{ path: "/analysis", name: "Analysis", component: Analysis , props: true},
         // { path: "/liveview", name: "Liveview", component: Liveview , props: true},
-        { path: "/admin", name: "Operation", component: Operation , props: true},
+        { path: "/admin", name: "Operation", component: Operation, props: true },
+        { path: "/liveview", name: "Liveview", component: Liveview , props: true},
         { path: "/SendRecord", name: "SendRecord", component: SendRecord }
         // , {
         //     children:

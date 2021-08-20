@@ -11,6 +11,9 @@
         <div>
                 <button  @click="moveToAdmin">AdminPage</button>
         </div>
+        <div>
+                <button  @click="moveToLiveview">Position Chart</button>
+        </div>
     <!-- <Chart></Chart> -->
     <Records title="Death's History"></Records>
     
@@ -45,6 +48,9 @@
         }
         moveToAdmin(){
                  this.$router.push("/Admin");
+        }
+        moveToLiveview(){
+                 this.$router.push("/Liveview");
         }
     }
    
