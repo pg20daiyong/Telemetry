@@ -45,11 +45,23 @@ exports.aggregate = functions.https.onCall((snapshot, context) => {
 exports.getdata = functions.https.onRequest((request, response) => {
     cors(request, response, () => {
         let db = admin.firestore();
-        db.collection("telemetry").doc("data").get()
-            .then(doc => {
-                const data = doc.data();
-                return response.send(data);
-            })
+        var data = []
+        db.collection("telemetry").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                //console.log(doc.id, " => ", doc.data());
+                data.push(doc.data());
+            });
+            console.log(data)
+            var result = {
+                data : data
+            }
+            return response.send(result);
+        })
+            // .then(doc => {
+            //     const data = doc.data();
+            //     return response.send(data);
+            // })
     });
     // const myId = request.params.id;
     // console.log(myId)
@@ -61,22 +73,49 @@ exports.senddata = functions.https.onRequest((request, response) => {
 
     cors(request, response, () => {
         let db = admin.firestore();
-        const data = { "data": [{ "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 604143841, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }] }
+        const data = { "data": [{ "sessionID": 1, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 2, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 3, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 4, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 5, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 6, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 7, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 8, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 9, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 10, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }, { "sessionID": 11, "timestamp": 0.0, "action": 0, "teamID": 0, "botID": 11, "xLocation": -26.0, "zLocation": 45.099998474121097, "xHeading": -26.0, "zHeading": 47.099998474121097 }] }
 
-        console.log(data)
-        const promise = db.collection("telemetry").doc("data").set(data)
+        //console.log(data.length)
+        for (var i = 0; i < data.data.length; i++) {
+            var id = data.data[i].sessionID
+            var promise = db.collection("telemetry").doc(`${id}`).set(data.data[i])
+
+            var prom = promise.then(() => {
+                response.end()
+            })
+            prom.catch(error => {
+                console.log(error);
+                response.status(500).send(error);
+            })
+        }
+        // const promise = db.collection("telemetry").doc("data").set(data)
+        // const prom = promise.then(() => {
+        //     response.end()
+        // })
+        // prom.catch(error => {
+        //     console.log(error);
+        //     response.status(500).send(error);
+        // })
+    });
+});
+
+exports.updatedata = functions.https.onRequest((request, response) => {
+
+    cors(request, response, () => {
+        var data = request.body;
+        console.log(data);
+    
+        const promise = db.collection("telemetry").doc(`${data.sessionID}`)
+            .set({data})
+        
         const prom = promise.then(() => {
             response.end()
         })
         prom.catch(error => {
             console.log(error);
             response.status(500).send(error);
-        })
+        })    
     });
-
-
-
-
     // const myId = request.params.id;
     // //  work here
     //  console.log(myId)

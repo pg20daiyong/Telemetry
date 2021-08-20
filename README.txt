@@ -1,9 +1,9 @@
 # Telemetry
 
-### **PG20 T4 Cloud Computing - A3: Telemetry Admin System - Round Trip Data**
+### **PG20 T4 Cloud Computing - Telemetry Analytics System - 4 charts**
 
 Submitted by: Daiyong Kim
-Date: 02/08/2021
+Date: 18/08/2021
 
 ---
 
@@ -15,16 +15,19 @@ This project shows the client app running in cloud(Google). and the admin page f
 download from git 
 > git clone https://github.com/pg20daiyong/Telemetry.git
 ---
-
-- > vue ui
-- go to: http://localhost:8000
-- Go to tasks -> serve -> click on 'run task'
-- go to: http://localhost:4000/
-
-or
-
 - > npm run client
-- go to : http://localhost:4000/
+- go to : http://localhost:8000/
+
+- > npm run serve
+- eumlator UI : http://localhost:4000
+
+1. go to http://localhost:8080/#/admin
+2. click modify data
+3. just send click ( it sends the basic imported data to emulator)
+4. go to http://localhost:8080
+5. it shows some data
+6. you can go to several pages
+
 
 ### **Package Install**
 

@@ -3,7 +3,7 @@
 
 
     <section class="operation-container">
-        <h2>Welcome to {{ name }}</h2>
+        <h2>Welcome to Admin</h2>
 
         <!-- <div class="Operation">{{ name }} your Vue.js App</div> -->
         <div title="Welcome to Operation Page"/>

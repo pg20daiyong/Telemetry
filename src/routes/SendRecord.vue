@@ -53,7 +53,7 @@
         this.props = { // props are passed in when using this component
           title: String
         }
-        this.injectActions(mapActions(['doSendRecord']));
+        this.injectActions(mapActions(['doUpdateRecord']));
     }
     
     sendSingleRecord() {
@@ -70,7 +70,7 @@
             zHeading: document.getElementById('zHeading').value,
         }          
             
-        this.doSendRecord(data);
+        this.doUpdateRecord(data);
         console.log(data)
     }
   }

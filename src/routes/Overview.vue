@@ -2,24 +2,49 @@
 <template>
   <div class="home">
     <h1>Welcome to Telemetry App</h1>
+        <div>
+                <button v-on:click="sendSingleRecord()">Data Injection</button>
+        </div>
+        <div>
+                <button onClick="window.location.reload();">Refresh Page</button>
+        </div>
+        <div>
+                <button  @click="moveToAdmin">AdminPage</button>
+        </div>
     <!-- <Chart></Chart> -->
     <Records title="Death's History"></Records>
+    
   </div>
+  
 </template>
 
 <script>
     import Controller from '@/mixins/controller'
     import Records from '@/components/Records.vue'
+    import { mapActions, mapGetters } from 'vuex'
+
 
 
     class OverviewController extends Controller {
 
 
         constructor( name, subComponentList = []) {
-            super( name, subComponentList );
+            super( name, subComponentList )
             this.vm = {
-                name: 'Overview',
             }
+            this.props = { // props are passed in when using this component
+            title: String
+            }
+            this.injectActions(mapActions(['doSendRecord']));
+        }
+        sendSingleRecord() {
+            this.doSendRecord();
+        }
+        reload(){
+                 this.$router.push("");
+        }
+        moveToAdmin(){
+                 this.$router.push("/Admin");
         }
     }
    
