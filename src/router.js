@@ -10,8 +10,9 @@ Vue.use( Router );
 
 
 import Operation from '@/routes/Operation.vue'
-//import Analysis from '@/routes/Analysis.vue'
+import Analysis from '@/routes/Analysis.vue'
 import Liveview from '@/routes/Liveview.vue'
+//import Heatmap from '@/routes/Heatmap.vue'
 import Overview from '@/routes/Overview.vue'
 import SendRecord from '@/routes/SendRecord.vue'
 
@@ -19,8 +20,8 @@ import SendRecord from '@/routes/SendRecord.vue'
 export default new Router({
     routes: [
         { path: "/", name: "Overview", component: Overview , props: true},// props: { name: "Modify Data" } },
-        //{ path: "/analysis", name: "Analysis", component: Analysis , props: true},
-        // { path: "/liveview", name: "Liveview", component: Liveview , props: true},
+        { path: "/analysis", name: "Analysis", component: Analysis , props: true},
+        //{ path: "/Heatmap", name: "Heatmap", component: Heatmap , props: true},
         { path: "/admin", name: "Operation", component: Operation, props: true },
         { path: "/liveview", name: "Liveview", component: Liveview , props: true},
         { path: "/SendRecord", name: "SendRecord", component: SendRecord }

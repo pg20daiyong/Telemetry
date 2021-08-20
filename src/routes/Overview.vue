@@ -14,6 +14,9 @@
         <div>
                 <button  @click="moveToLiveview">Position Chart</button>
         </div>
+        <div>
+                <button  @click="moveToHeatMap">Chart </button>
+        </div>
     <!-- <Chart></Chart> -->
     <Records title="Death's History"></Records>
     
@@ -51,6 +54,9 @@
         }
         moveToLiveview(){
                  this.$router.push("/Liveview");
+        }
+        moveToHeatMap(){
+                 this.$router.push("/Analysis");
         }
     }
    
