@@ -27,11 +27,14 @@ This project shows the client app running in cloud(Google). and the admin page f
 > go to http://localhost:5001
 
 1. this table shows nothing.
-2. go to http://localhost:8080/#/admin
-3. click modify data
-4. just send click ( it sends the basic imported data to emulator)
-5. go to http://localhost:8080
-6. it shows some data
+2. go to http://localhost:8080/#/
+3. click Data Injection (data store to firebase emulator)
+4. click Refresh Page (load data)
+5. click AdminPage (you can modify data from sessionID)
+6. click Position Cart
+7. click Chart
+8. go to http://localhost:5001
+9. you can check firebase data
 
 ### **Package Install**
 
@@ -42,6 +45,8 @@ This project shows the client app running in cloud(Google). and the admin page f
 - npm install axios
 - npm install vue-router
 - npm install --save vue-chartjs
+- npm install --save chart.js
+- npm install chart.js@2
 
 ## Authors
 

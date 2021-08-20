@@ -1,9 +1,9 @@
 # Telemetry
 
-### **PG20 T4 Cloud Computing - Telemetry Analytics System - 4 charts**
+### **PG20 T4 Cloud Computing - A3: Telemetry Admin System - Round Trip Data**
 
 Submitted by: Daiyong Kim
-Date: 18/08/2021
+Date: 02/08/2021
 
 ---
 
@@ -12,22 +12,29 @@ Date: 18/08/2021
 This project shows the client app running in cloud(Google). and the admin page functioning to accept access and display telemetry data generated from game data.
 
 #### **How to use**
-download from git 
-> git clone https://github.com/pg20daiyong/Telemetry.git
+
 ---
-- > npm run client
-- go to : http://localhost:8000/
 
+- fire base emulator run:
+- go to functions directory
 - > npm run serve
-- eumlator UI : http://localhost:4000
+- go to: http://localhost:5001
 
-1. go to http://localhost:8080/#/admin
-2. click modify data
-3. just send click ( it sends the basic imported data to emulator)
-4. go to http://localhost:8080
-5. it shows some data
-6. you can go to several pages
+- client application run:
+- > npm run client
+- go to: http://localhost:8080
 
+> go to http://localhost:5001
+
+1. this table shows nothing.
+2. go to http://localhost:8080/#/
+3. click Data Injection (data store to firebase emulator)
+4. click Refresh Page (load data)
+5. click AdminPage (you can modify data from sessionID)
+6. click Position Cart
+7. click Chart
+8. go to http://localhost:5001
+9. you can check firebase data
 
 ### **Package Install**
 
